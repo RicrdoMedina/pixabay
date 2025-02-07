@@ -2,20 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+	box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.container-swiper .swiper .swiper-button-prev.swiper-button-disabled,
+.container-swiper .swiper .swiper-button-next.swiper-button-disabled {
+	opacity: 0;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.container-swiper .swiper .swiper-button-prev {
+	left: -9px;
+	background-color: transparent;
+}
+
+.container-swiper .swiper .swiper-button-next {
+	right: -9px;
+	background-color: transparent;
+}
+
+.container-swiper .swiper .swiper-button-prev:after,
+.container-swiper .swiper .swiper-button-next:after {
+	font-size: 1rem;
+	color: #fff;
+	font-weight: bold;
+}
+
+.container-swiper .swiper,
+.container-swiper .swiper-wrapper,
+.container-swiper .swiper-slide {
+	height: 100%;
+}
+
+.container-swiper .swiper-slide {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+}
+
+.container-swiper__banner .container-swiper__swiper-button-prev,
+.container-swiper__banner .container-swiper__swiper-button-next {
+	color: #fff;
+}
+
+.container-swiper__banner .container-swiper__swiper-button-prev:hover,
+.container-swiper__banner .container-swiper__swiper-button-next:hover {
+	background: #ffffff29;
 }

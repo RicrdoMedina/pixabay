@@ -10,7 +10,19 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "next/typescript",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ),
+  {
+    plugins: ["prettier", "filenames"],
+    rules: {
+      "prettier/prettier": "error",
+      "filenames/match-regex": ["error", "^[a-z0-9-.]+$", true],
+    },
+  },
 ];
 
 export default eslintConfig;
