@@ -1,5 +1,3 @@
-
-// src/gallery/infrastructure/ApiGalleryRepository.ts
 import { GalleryRepository } from "../domain/GalleryRepository";
 import { GalleryEntity } from "../domain/GalleryEntity";
 

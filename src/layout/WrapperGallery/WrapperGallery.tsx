@@ -7,9 +7,10 @@ import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 
 type WrapperGalleryProps = {
 	items: GalleryEntity[];
+	title: string;
 };
 
-const WrapperGallery: React.FC<WrapperGalleryProps> = ({ items }) => {
+const WrapperGallery: React.FC<WrapperGalleryProps> = ({ items, title }) => {
 	const componentsToRender = [
 		{
 			component: Button,
@@ -44,8 +45,7 @@ const WrapperGallery: React.FC<WrapperGalleryProps> = ({ items }) => {
 		<section className="w-full">
 			<div className="flex items-center justify-between">
 				<Heading className="text-xl text-bold font-sans font-bold" level={2}>
-					Over 5.3 million+ high quality stock images, videos and music shared
-					by our talented community.
+					{title}
 				</Heading>
 				<NavigationList components={componentsToRender} />
 			</div>

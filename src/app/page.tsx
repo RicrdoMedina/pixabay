@@ -1,10 +1,10 @@
 import Header from '@/layout/Header/Header';
 import Hero from '@/layout/Banner/Banner';
-import WrapperGallery from '@/layout/WrapperGallery/WrapperGallery';
-import { galleryUseCase } from "@/gallery/dependencyInjection/dependencyInjection";
+import { getGalleryItemsServer } from '@/actions/galleryActions';
+import GalleryPage from '@/layout/WrapperGallery/GalleryPage/GalleryPage';
 
 export default async function HomePage() {
-  const galleryItems = await galleryUseCase.getAll();
+	const galleryItems = await getGalleryItemsServer();
 
 	return (
 		<div className="w-full">
@@ -12,7 +12,11 @@ export default async function HomePage() {
 			<Hero />
 			<main>
 				<div className="w-full py-10 px-20">
-					<WrapperGallery items={galleryItems} />
+					<GalleryPage
+						initialData={galleryItems}
+						title="Over 5.3 million+ high quality stock images, videos and music shared
+					by our talented community."
+					/>
 				</div>
 			</main>
 		</div>
