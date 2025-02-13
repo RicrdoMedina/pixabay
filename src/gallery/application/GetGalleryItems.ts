@@ -1,9 +1,5 @@
-import { GalleryRepository } from "../domain/GalleryRepository";
+import { GalleryEntity } from "@/gallery/domain/gallery.entity";
 
-export class GetGalleryItems {
-  constructor(private galleryRepository: GalleryRepository) {}
-
-  async execute() {
-    return await this.galleryRepository.getAll();
-  }
-}
+export const GetGalleryItems = (fetchAll: () => Promise<GalleryEntity[]>) => async (): Promise<GalleryEntity[]> => {
+  return await fetchAll();
+};

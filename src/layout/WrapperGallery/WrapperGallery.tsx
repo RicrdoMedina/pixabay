@@ -3,7 +3,7 @@ import Heading from '@/components/Heading/Heading';
 import Button from '@/components/Button/Button';
 import MasonryGallery from '@/components/MasonryGallery/MasonryGallery';
 import NavigationList from '@/components/NavigationList/NavigationList';
-import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
+import { GalleryEntity } from '@/gallery/domain/gallery.entity';
 
 type WrapperGalleryProps = {
 	items: GalleryEntity[];

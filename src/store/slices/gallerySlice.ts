@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { galleryUseCase } from '@/gallery/dependencyInjection/dependencyInjection';
-import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
+import { GalleryEntity } from '@/gallery/domain/gallery.entity';
 
 type GalleryState = {
 	items: GalleryEntity[];
@@ -54,9 +53,9 @@ export const fetchGalleryItems = createAsyncThunk(
   "gallery/fetchGalleryItems",
   async (_, { rejectWithValue }) => {
     try {
-      return await galleryUseCase.getAll();
+      //return await galleryUseCase.getAll();
     } catch (error: any) {
-      return rejectWithValue(error.message);
+      //return rejectWithValue(error.message);
     }
   }
 );

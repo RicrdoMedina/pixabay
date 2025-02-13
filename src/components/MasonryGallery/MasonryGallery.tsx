@@ -1,5 +1,5 @@
 import ImageCard from "@/components/MasonryGallery/ImageCard";
-import { GalleryEntity } from "@/gallery/domain/GalleryEntity";
+import { GalleryEntity } from "@/gallery/domain/gallery.entity";
 
 type GalleryProps = {
   items: GalleryEntity[];

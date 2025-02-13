@@ -343,9 +343,9 @@ const Banner = () => {
 					<SearchBarDropdown
 						className="bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 pl-4  h-14 rounded-full flex items-center justify-center"
 						classNameInput="w-full h-full border-none outline-none bg-transparent text-white font-sans"
-						placeholder='Search for free Images, Videos, Music & more'
+						placeholder="Search for free Images, Videos, Music & more"
 						dropdownButtonDisabled={true}
-						colorIcon='white'
+						colorIcon="white"
 					/>
 				</div>
 				<div className="w-full relative">

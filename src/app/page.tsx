@@ -1,5 +1,5 @@
 import Header from '@/layout/Header/Header';
-import Hero from '@/layout/Banner/Banner';
+import Banner from '@/layout/Banner/Banner';
 import { getGalleryItemsServer } from '@/actions/galleryActions';
 import GalleryPage from '@/layout/WrapperGallery/GalleryPage/GalleryPage';
 
@@ -9,7 +9,7 @@ export default async function HomePage() {
 	return (
 		<div className="w-full">
 			<Header />
-			<Hero />
+			<Banner />
 			<main>
 				<div className="w-full py-10 px-20">
 					<GalleryPage
