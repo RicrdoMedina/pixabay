@@ -1,4 +1,4 @@
-import { GalleryEntity } from '@/gallery/domain/gallery.entity';
+import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 
 export const SearchGalleryByTag =
 	(

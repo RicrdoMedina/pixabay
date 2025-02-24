@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { GalleryEntity } from '@/gallery/domain/gallery.entity';
+import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 
 type GalleryState = {
 	items: GalleryEntity[];

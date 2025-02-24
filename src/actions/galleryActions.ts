@@ -1,9 +1,10 @@
 "use server";
 
-import { getGalleryItemsUseCase } from "@/gallery/dependencyInjection/dependency.injection";
-import { GalleryEntity } from "@/gallery/domain/gallery.entity";
+import { GalleryEntity } from "@/gallery/domain/GalleryEntity";
 
-export async function getGalleryItemsServer(): Promise<GalleryEntity[]> {
+export async function getGalleryActions(
+  getGalleryItemsUseCase: () => Promise<GalleryEntity[]>
+): Promise<GalleryEntity[]> {
   try {
     return await getGalleryItemsUseCase();
   } catch (error) {

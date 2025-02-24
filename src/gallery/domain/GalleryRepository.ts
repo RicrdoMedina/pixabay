@@ -1,4 +1,4 @@
-import { GalleryEntity } from "./gallery.entity";
+import { GalleryEntity } from "./GalleryEntity";
 
 export type FetchAllGalleryItems = () => Promise<GalleryEntity[]>;
 export type FetchGalleryItemById = (id: number) => Promise<GalleryEntity | null>;

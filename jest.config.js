@@ -11,8 +11,8 @@ module.exports = {
 	collectCoverageFrom: [
 		'src/**/*.ts',
 		'!**/node_modules/**',
-		'!src/**/*.entity.ts',
-		'!src/**/*.config.ts',
+		'!src/**/domain/*Entity.ts',
+		'!src/**/config/*Config.ts',
 		'!src/**/index.ts',
 	],
 	coverageReporters: ['json', 'text', 'html', 'lcov'],

@@ -1,8 +1,7 @@
 export interface GalleryEntity {
 	id: number;
-	name: string;
-	type: 'PHOTO' | 'VIDEO';
-	tags: string[];
+	type: string;
+	tags: string;
 	previewURL: string;
 	previewWidth: number;
 	previewHeight: number;
@@ -22,4 +21,6 @@ export interface GalleryEntity {
 	user_id: number;
 	user: string;
 	userImageURL: string;
+	pageURL: string;
+	collections: number
 }

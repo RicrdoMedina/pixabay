@@ -1,4 +1,4 @@
-import { GalleryEntity } from "@/gallery/domain/gallery.entity";
+import { GalleryEntity } from "@/gallery/domain/GalleryEntity";
 
 
 const ImageCard: React.FC<{ image: GalleryEntity }> = ({ image }) => {

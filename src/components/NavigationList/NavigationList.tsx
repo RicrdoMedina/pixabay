@@ -12,7 +12,7 @@ type RendererProps = {
 const NavigationList: React.FC<RendererProps> = ({ components }) => {
 	return (
 		<nav>
-			<ul className='flex'>
+			<ul className='flex items-center justify-between'>
 				{components.map(({ component: Component, props }, index) => (
           <li key={index}>
             <Component {...props} />

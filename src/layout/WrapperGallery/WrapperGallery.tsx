@@ -3,7 +3,7 @@ import Heading from '@/components/Heading/Heading';
 import Button from '@/components/Button/Button';
 import MasonryGallery from '@/components/MasonryGallery/MasonryGallery';
 import NavigationList from '@/components/NavigationList/NavigationList';
-import { GalleryEntity } from '@/gallery/domain/gallery.entity';
+import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 
 type WrapperGalleryProps = {
 	items: GalleryEntity[];
@@ -42,16 +42,20 @@ const WrapperGallery: React.FC<WrapperGalleryProps> = ({ items, title }) => {
 	];
 
 	return (
-		<section className="w-full">
+		<section className="w-full relative">
 			<div className="flex items-center justify-between">
 				<Heading className="text-xl text-bold font-sans font-bold" level={2}>
 					{title}
 				</Heading>
 				<NavigationList components={componentsToRender} />
 			</div>
-			<div className="w-full pt-4">
+			<div
+				className="w-full pt-4 overflow-hidden "
+				style={{ maxHeight: '1112px' }}
+			>
 				<MasonryGallery items={items} />
 			</div>
+			<div className="absolute bottom-0 left-0 w-full flex items-end justify-center p-6 h-48 z-10 bg-gradient-to-b from-transparent to-white"></div>
 		</section>
 	);
 };

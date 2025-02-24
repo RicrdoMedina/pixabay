@@ -1,334 +1,58 @@
 'use client';
-
 import React from 'react';
 import Image from 'next/image';
 import Heading from '@/components/Heading/Heading';
 import NavigationList from '@/components/NavigationList/NavigationList';
 import SearchBarDropdown from '@/components/SearchBarDropdown/SearchBarDropdown';
-import Button from '@/components/Button/Button';
 import ContainerSwiper from '@/components/ContainerSwiper/ContainerSwiper';
+import { CategoryEntity } from '@/category/domain/CategoryEntity';
+import { mapCategoriesToButtons } from '@/lib/map/mapCategoriesToButtons';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, AppDispatch } from '@/store/store';
+import { selectCategory } from '@/store/slices/categorySlice';
+import { selectSubCategory } from '@/store/slices/subCategorySlice';
+import { SubCategoryEntity } from '@/subcategory/domain/SubCategoryEntity';
 
-const Banner = () => {
-	const componentsToRender = [
-		{
-			component: Button,
-			props: {
-				label: 'Explore',
-				className:
-					'w-auto h-10 px-4 bg-white flex items-center justify-center text-regular font-sans font-bold text-sm rounded-3xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'Photos',
-				className:
-					'w-auto h-10 px-4 bg-transparent hover:bg-white-opacity-30 flex items-center justify-center text-white font-sans font-bold text-sm rounded-3xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-	];
+type BannerProps = {
+	categoryItems: CategoryEntity[];
+	subCategoryItems: SubCategoryEntity[];
+};
 
-	const componentsCarousel = [
-		{
-			component: Button,
-			props: {
-				label: 'nature',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'background',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'wallperper',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'flowers',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'valentines',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'landscape',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'cat',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'business',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'sky',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'dog',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'money',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'nature',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'background',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'wallperper',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'flowers',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'valentines',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'landscape',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'cat',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'business',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'sky',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'dog',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'money',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'nature',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'background',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'wallperper',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'flowers',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'valentines',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'landscape',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'cat',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'business',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'sky',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'dog',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-		{
-			component: Button,
-			props: {
-				label: 'money',
-				className:
-					'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-				onClick: () => alert('Clicked!'),
-			},
-		},
-	];
+const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
+	const dispatch = useDispatch<AppDispatch>();
+	const selectedCategory = useSelector(
+		(state: RootState) => state.category.selectedItem
+	);
+
+	const selectedSubCategory = useSelector(
+		(state: RootState) => state.subCategory.selectedItem
+	);
+
+	const componentsToRender = mapCategoriesToButtons(
+		categoryItems,
+		selectedCategory,
+		'w-auto h-10 mx-1 px-4 flex items-center justify-center text-regular font-sans font-bold text-sm rounded-3xl ease-in-out transition-all duration-500',
+		'w-auto h-10 mx-1 px-4 bg-transparent hover:bg-white-opacity-30 flex items-center justify-center text-white font-sans font-bold text-sm rounded-3xl',
+		'bg-white',
+		handleCategoryClick
+	);
+
+	const componentsCarousel = mapCategoriesToButtons(
+		subCategoryItems,
+		selectedSubCategory,
+		'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
+		'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
+		'',
+		handleSubCategoryClick
+	);
+
+	function handleCategoryClick(categoryId: number) {
+		dispatch(selectCategory(categoryId));
+	}
+
+	function handleSubCategoryClick(subCategoryId: number) {
+		dispatch(selectSubCategory(subCategoryId));
+	}
 
 	return (
 		<section className="w-full relative py-32 px-24">
