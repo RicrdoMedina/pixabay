@@ -4,7 +4,7 @@ import {
 } from '@/gallery/infrastructure/GalleryOperation';
 import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 
-describe('fetchAllGalleryItems gallery.operation.ts', () => {
+describe('fetchAllGalleryItems GalleryOperation.ts', () => {
 	let mockHttp: { get: jest.Mock };
 	let mockMapGalleryData: jest.Mock;
 
@@ -48,7 +48,6 @@ describe('fetchAllGalleryItems gallery.operation.ts', () => {
 
 		expect(mockHttp.get).toHaveBeenCalledTimes(1);
 		expect(mockMapGalleryData).toHaveBeenCalledWith([]);
-		console.log('🔍 result:', result);
 		expect(result).toEqual([]);
 	});
 
@@ -62,9 +61,23 @@ describe('fetchAllGalleryItems gallery.operation.ts', () => {
 		expect(mockMapGalleryData).not.toHaveBeenCalled();
 		expect(result).toEqual([]);
 	});
+
+	test("should handle non-200 API responses", async () => {
+		mockHttp.get.mockResolvedValue({
+			status: 500,
+			statusText: "Internal Server Error"
+		})
+
+		const getGalleryItems = fetchAllGalleryItems(mockHttp, mockMapGalleryData)
+		const result = await getGalleryItems();
+
+		expect(mockHttp.get).toHaveBeenCalledTimes(1);
+		expect(mockMapGalleryData).not.toHaveBeenCalled();
+		expect(result).toEqual([])
+	})
 });
 
-describe('searchGalleryByTag gallery.operation.ts', () => {
+describe('searchGalleryByTag GalleryOperation.ts', () => {
 	let mockHttp: { get: jest.Mock };
 	let mockMapGalleryData: jest.Mock;
 
@@ -135,4 +148,18 @@ describe('searchGalleryByTag gallery.operation.ts', () => {
 		expect(mockMapGalleryData).not.toHaveBeenCalled();
 		expect(result).toEqual([]);
 	});
+
+	test("should handle non-200 API responses", async () => {
+		mockHttp.get.mockResolvedValue({
+			status: 500,
+			statusText: "Internal Server Error"
+		})
+
+		const getGalleryItemsByTags = searchGalleryByTag(mockHttp, mockMapGalleryData)
+		const result = await getGalleryItemsByTags('key=ksl455&q=invalid');
+
+		expect(mockHttp.get).toHaveBeenCalledTimes(1);
+		expect(mockMapGalleryData).not.toHaveBeenCalled();
+		expect(result).toEqual([])
+	})
 });

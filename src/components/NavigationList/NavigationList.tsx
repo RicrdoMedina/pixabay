@@ -7,14 +7,17 @@ type ComponentWithProps = {
 
 type RendererProps = {
 	components: ComponentWithProps[];
+	wrapperClasses?: string;
+	containerClasses?: string;
+	itemClasses?: string;
 };
 
-const NavigationList: React.FC<RendererProps> = ({ components }) => {
+const NavigationList: React.FC<RendererProps> = ({ components, containerClasses, wrapperClasses, itemClasses }) => {
 	return (
-		<nav>
-			<ul className='flex items-center justify-between'>
+		<nav className={wrapperClasses}>
+			<ul className={containerClasses}>
 				{components.map(({ component: Component, props }, index) => (
-          <li key={index}>
+          <li className={itemClasses} key={index}>
             <Component {...props} />
           </li>
 				))}

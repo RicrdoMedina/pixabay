@@ -32,21 +32,21 @@ const ContainerSwiper: React.FC<SwiperProps> = ({
 	const swiperRef = React.useRef<any>(null);
 	const [swiperInstance, setSwiperInstance] = React.useState<any>(null);
 	const [isPrevDisabled, setIsPrevDisabled] = React.useState<boolean>(false);
-  const [isNextDisabled, setIsNextDisabled] = React.useState<boolean>(false);
+	const [isNextDisabled, setIsNextDisabled] = React.useState<boolean>(false);
 
 	React.useEffect(() => {
 		if (swiperRef.current) {
-      const swiper = swiperRef.current.swiper;
-      setSwiperInstance(swiper);
+			const swiper = swiperRef.current.swiper;
+			setSwiperInstance(swiper);
 
-      setIsPrevDisabled(swiper.isBeginning);
-      setIsNextDisabled(swiper.isEnd);
+			setIsPrevDisabled(swiper.isBeginning);
+			setIsNextDisabled(swiper.isEnd);
 
-      swiper.on('slideChange', () => {
-        setIsPrevDisabled(swiper.isBeginning);
-        setIsNextDisabled(swiper.isEnd);
-      });
-    }
+			swiper.on('slideChange', () => {
+				setIsPrevDisabled(swiper.isBeginning);
+				setIsNextDisabled(swiper.isEnd);
+			});
+		}
 	}, []);
 
 	const handleNext = () => {
@@ -62,7 +62,7 @@ const ContainerSwiper: React.FC<SwiperProps> = ({
 	};
 
 	return (
-		<div className={className}>
+		<div className={className} data-testid="swiper-container">
 			<div className="w-full h-12 flex">
 				<Swiper
 					ref={swiperRef}
@@ -75,7 +75,7 @@ const ContainerSwiper: React.FC<SwiperProps> = ({
 					modules={[Navigation]}
 				>
 					{components.map(({ component: Component, props }, index) => (
-						<SwiperSlide key={index}>
+						<SwiperSlide key={index} data-testid={`slide-${index}`}>
 							<div className="w-full flex items-center justify-center">
 								<Component key={index} {...props} />
 							</div>
@@ -85,15 +85,17 @@ const ContainerSwiper: React.FC<SwiperProps> = ({
 				{customNavigation && !isPrevDisabled && (
 					<button
 						onClick={handlePrev}
-						className="absolute container-swiper__swiper-button-prev z-50 cursor-pointer w-10 h-10 rounded-full -left-10 top-1/2 transform -translate-y-1/2 p-2 ease-in-out transition-all duration-500"
+						className="absolute container-swiper__swiper-button-prev z-50 cursor-pointer w-10 h-10 rounded-full -left-10 top-1/2 transform -translate-y-1/2 p-2 ease-in-out transition-all duration-500 hidden md:flex"
+						data-testid="prev-button"
 					>
 						<ArrowLeftIcon />
 					</button>
 				)}
-			 {customNavigation && !isNextDisabled && (
+				{customNavigation && !isNextDisabled && (
 					<button
 						onClick={handleNext}
-						className="absolute container-swiper__swiper-button-next z-50 cursor-pointer w-10 h-10 rounded-full -right-10 top-1/2 transform -translate-y-1/2  p-2 ease-in-out transition-all duration-500"
+						className="absolute container-swiper__swiper-button-next z-50 cursor-pointer w-10 h-10 rounded-full -right-10 top-1/2 transform -translate-y-1/2  p-2 ease-in-out transition-all duration-500 hidden md:flex"
+						data-testid="next-button"
 					>
 						<ArrowRightIcon />
 					</button>

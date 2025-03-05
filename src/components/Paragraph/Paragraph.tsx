@@ -6,7 +6,7 @@ type ParagraphProps = {
 };
 
 const Paragraph: FC<ParagraphProps> = ({ className, text }) => {
-	return <div className={className}>{text}</div>;
+	return <p className={className} role="paragraph">{text}</p>;
 };
 
 export default Paragraph;

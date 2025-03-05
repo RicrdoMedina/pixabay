@@ -1,7 +1,7 @@
 import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
-import { getGalleryItemsServer } from '@/actions/galleryActions';
+import { getGalleryActions } from '@/actions/galleryActions';
 
-describe('galleryActions.test.ts', () => {
+describe('galleryActions.ts', () => {
 	test('should return gallery items correctly', async () => {
 		const mockGalleryItems: GalleryEntity[] = [
 			{
@@ -41,7 +41,7 @@ describe('galleryActions.test.ts', () => {
 			.fn()
 			.mockResolvedValue(mockGalleryItems);
 
-		const galleryItems = await getGalleryItemsServer(
+		const galleryItems = await getGalleryActions(
 			mockGetGalleryItemsUseCase
 		);
 		expect(mockGetGalleryItemsUseCase).toHaveBeenCalledTimes(1);
@@ -52,7 +52,7 @@ describe('galleryActions.test.ts', () => {
 	test('should handle errors correctly', async () => {
     const mockUseCase = jest.fn().mockRejectedValue(new Error("API Error"));
 
-    const result = await getGalleryItemsServer(mockUseCase);
+    const result = await getGalleryActions(mockUseCase);
 
     expect(mockUseCase).toHaveBeenCalledTimes(1);
     expect(result).toEqual([]);

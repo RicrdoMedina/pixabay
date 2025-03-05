@@ -1,51 +1,56 @@
-import Button from "@/components/Button/Button";
-
 type ButtonProps = {
 	label: string;
 	className: string;
-	primaryStyle: string;
-	secondaryStyle: string;
+	defaultStyle: string;
 	activeStyle: string;
+	inactiveStyle: string;
 	onClick: () => void;
 };
 
 class ButtonBuilder {
 	private props: ButtonProps;
+	private Component: React.ComponentType<any>;
 
-	constructor(label: string, primaryStyle: string, secondaryStyle: string, activeStyle: string, onClick: () => void) {
+	constructor(
+		Component: React.ComponentType<any>,
+		label: string,
+		defaultStyle: string,
+		activeStyle: string,
+		inactiveStyle: string,
+		onClick: () => void
+	) {
+		this.Component = Component;
 		this.props = {
 			label,
-			primaryStyle,
-			secondaryStyle,
+			defaultStyle,
+			inactiveStyle,
 			activeStyle,
 			className: '',
 			onClick,
 		};
 	}
 
-	setPrimaryStyle() {
-		this.props.className = this.props.primaryStyle
-		return this;
-	}
-
-	setSecondaryStyle() {
-		this.props.className =
-			this.props.secondaryStyle;
+	setDefaultStyle() {
+		this.props.className = this.props.defaultStyle;
 		return this;
 	}
 
 	setActiveStyle() {
-		this.props.className += ` ${this.props.activeStyle}`;
+		this.props.className = `${this.props.defaultStyle} ${this.props.activeStyle}`.trim();
+		return this;
+	}
+
+	setInactiveStyle() {
+		this.props.className = `${this.props.defaultStyle} ${this.props.inactiveStyle}`.trim();
 		return this;
 	}
 
 	build() {
 		return {
-			component: Button,
+			component: this.Component,
 			props: this.props,
 		};
 	}
 }
 
 export default ButtonBuilder;
-

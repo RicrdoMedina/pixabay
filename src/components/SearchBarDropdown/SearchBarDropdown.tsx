@@ -28,7 +28,7 @@ const SearchBarDropdown: React.FC<SearchBarDropdownProps> = ({
 			<span className="w-8 flex-grow-0">
 				<SearchDropdownIcon color={colorIcon}/>
 			</span>
-			<div className="flex-grow">
+			<div className="flex-grow h-full">
 				<SearchDropdownInput
 					className={classNameInput}
 					placeholder={placeholder}

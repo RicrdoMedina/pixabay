@@ -6,15 +6,24 @@ import { AppDispatch, RootState } from '@/store/store';
 
 type withGallerySyncProps<T> = {
 	initialData: T[];
-  title: string
+	title: string;
+	subtitle?: string;
 };
 
 export function withGallerySync<T>(
-	Component: React.ComponentType<{ items: T[], title: string }>,
+	Component: React.ComponentType<{
+		items: T[];
+		title: string;
+		subtitle?: string;
+	}>,
 	fetchAction: (data: T[]) => any,
 	selectData: (state: RootState) => T[]
 ) {
-	return function WrappedComponent({ initialData, title }: withGallerySyncProps<T>) {
+	return function WrappedComponent({
+		initialData,
+		title,
+		subtitle,
+	}: withGallerySyncProps<T>) {
 		const dispatch = useDispatch<AppDispatch>();
 		const items = useSelector(selectData);
 
@@ -24,11 +33,6 @@ export function withGallerySync<T>(
 			}
 		}, [items, initialData, dispatch]);
 
-		return (
-			<Component
-				items={items}
-				title={title}
-			/>
-		);
+		return <Component items={items} title={title} subtitle={subtitle} />;
 	};
 }

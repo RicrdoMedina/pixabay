@@ -9,6 +9,7 @@ import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 type Props = {
 	initialData: GalleryEntity[];
 	title: string;
+	subtitle?: string;
 };
 
 const selectGalleryItems = (state: RootState) => state.gallery.items;
@@ -19,11 +20,12 @@ const WrapperGalleryWithState = withGallerySync(
 	selectGalleryItems
 );
 
-export default function GalleryPage({ initialData, title }: Props) {
+export default function GalleryPage({ initialData, title, subtitle }: Props) {
 	return (
 		<WrapperGalleryWithState
 			initialData={initialData}
 			title={title}
+			subtitle={subtitle}
 		/>
 	);
 }

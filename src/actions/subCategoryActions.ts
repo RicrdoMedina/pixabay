@@ -8,7 +8,7 @@ export async function getSubCategoryActions(
   try {
     return await getSubCategoryItemsUseCase();
   } catch (error) {
-    console.error('Error obteniendo sub categorias', error);
+    console.error('Error: Could not subcategories', error);
     return [];
   }
 }

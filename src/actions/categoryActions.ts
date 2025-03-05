@@ -8,7 +8,7 @@ export async function getCategoryActions(
 	try {
 		return await getCategoryItemsUseCase();
 	} catch (error) {
-		console.error('Error obteniendo categorias', error);
+		console.error('Error: Could not get categories', error);
 		return [];
 	}
 }

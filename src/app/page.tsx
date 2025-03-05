@@ -26,19 +26,28 @@ export default async function HomePage() {
 			<Banner
 				categoryItems={categoryItems}
 				subCategoryItems={subCategoryItems}
-			/>
+			/> 
 			<main>
-				<div className="w-full py-10 px-20">
-					<GalleryPage
-						initialData={galleryItems}
-						title="Over 5.3 million+ high quality stock images, videos and music shared
+				<div className="w-full py-10 px-4 md:px-8 3xl:px-20">
+					<div className="w-full hidden lg:block">
+						<GalleryPage
+							initialData={galleryItems}
+							title="Over 5.3 million+ high quality stock images, videos and music shared
 					by our talented community."
-					/>
+						/>
+					</div>
+					<div className="w-full block lg:hidden">
+						<GalleryPage
+							initialData={galleryItems}
+							title="Stunning royalty-free images & royalty-free stock"
+							subtitle="Over 5.3 million+ high quality stock images, videos and music shared by our talented community."
+						/>
+					</div>
 				</div>
-				<div className="w-full px-20">
+				<div className="w-full px-8 3xl:px-20">
 					<div className="w-full border-t border-gray-200">
 						<ParagraphWrapper
-							className="w-full flex items-start justify-between py-16"
+							className="w-full flex flex-col md:flex-row gap-4 items-start justify-between py-12 md:py-16"
 							icon={HeartIcon}
 							iconClassName="h-4 w-4 text-primary"
 						>
@@ -59,7 +68,7 @@ export default async function HomePage() {
 						</ParagraphWrapper>
 					</div>
 				</div>
-				<Footer/>
+				<Footer />
 			</main>
 		</div>
 	);

@@ -15,7 +15,7 @@ const ParagraphWrapper: FC<ParagraphWrapperProps> = ({
 }) => {
 	return (
 		<article className={className}>
-			<div className="flex items-start justify-center w-24 flex-grow-0">
+			<div className="flex items-start justify-center md:w-24 flex-grow-0">
 				<span className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
 					<Icon className={iconClassName} />
 				</span>

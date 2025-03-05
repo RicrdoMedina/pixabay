@@ -8,7 +8,7 @@ export async function getGalleryActions(
   try {
     return await getGalleryItemsUseCase();
   } catch (error) {
-    console.error("Error obteniendo imágenes del servidor:", error);
+    console.error("Error: Could not get images", error);
     return [];
   }
 }

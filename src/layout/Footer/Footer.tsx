@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Paragraph from '@/components/Paragraph/Paragraph';
@@ -10,8 +9,8 @@ import PinterestIcon from '@/components/Svg/PinterestIcon';
 const Footer = () => {
 	return (
 		<footer className="border-t border-gray-200 flex flex-col items-center justify-center w-full">
-			<div className="bg-white flex items-stretch gap-6 w-full p-20">
-				<div className="flex-auto flex flex-col gap-y-4">
+			<div className="bg-white flex flex-wrap items-stretch gap-6 w-full px-4 md:px-8 3xl:px-20 py-12 md:py-20">
+				<div className="w-full xl:w-auto flex-auto flex flex-col gap-y-4">
 					<div className="w-full">
 						<Link href="/">
 							<Image
@@ -42,7 +41,7 @@ const Footer = () => {
 						</span>
 					</div>
 				</div>
-				<div className="flex flex-col flex-auto gap-4 min-w-[168px]">
+				<div className="flex flex-col flex-auto gap-4 lg:min-w-[168px] w-full md:w-auto">
 					<Paragraph
 						className="text-sm text-bold font-semibold"
 						text="Discover"
@@ -107,7 +106,7 @@ const Footer = () => {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col flex-auto gap-4 min-w-[168px]">
+				<div className="flex flex-col flex-auto gap-4 lg:min-w-[168px] w-full md:w-auto">
 					<Paragraph
 						className="text-sm text-bold font-semibold"
 						text="Community"
@@ -148,7 +147,7 @@ const Footer = () => {
 						</li>
 					</ul>
 				</div>
-				<div className="flex flex-col flex-auto gap-4 min-w-[168px]">
+				<div className="flex flex-col flex-auto gap-4 lg:min-w-[168px] w-full md:w-auto">
 					<Paragraph className="text-sm text-bold font-semibold" text="About" />
 
 					<ul className="p-0 gap-y-2 flex flex-col">
@@ -228,7 +227,7 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="w-full flex bg-gray-100 py-3">
-				<p className="w-full text-xs text-light flex items-center justify-center">
+				<p className="w-full text-xs text-light flex items-center justify-center flex-wrap">
 					This site is protected by reCAPTCHA and the Google
 					<a
 						href="https://policies.google.com/privacy"
