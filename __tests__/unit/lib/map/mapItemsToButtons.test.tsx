@@ -1,5 +1,5 @@
 import { mapItemsToButtons } from '@/lib/map/mapItemsToButtons';
-import MockButton from '@/mocks/dummyData/MockButton';
+import MockButton from '../../__mocks__/MockButton';
 
 describe('mapItemsToButtons.ts', () => {
 	let onClickMock: jest.Mock;

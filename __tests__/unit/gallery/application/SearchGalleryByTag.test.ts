@@ -1,6 +1,6 @@
 import { SearchGalleryByTag } from '@/gallery/application/SearchGalleryByTag';
 import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
-import mockGalleryItems from '@/mocks/mockGalleryItems';
+import mockGalleryItems from '../../__mocks__/mockGalleryItems';
 
 describe('GetGalleryItems Use Case', () => {
 	const queryParams = "'key=ksl455&q=yellow+flowers&image_type=photo'";

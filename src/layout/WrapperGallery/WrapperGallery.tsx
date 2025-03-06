@@ -14,7 +14,7 @@ import { HeartIcon } from '@heroicons/react/24/solid';
 import { BookmarkIcon } from '@heroicons/react/24/solid';
 import MedalIcon from '@/components/Svg/MedalIcon';
 import ImageCard from '@/components/ImageCard/ImageCard';
-import ImageActionsOverlay from '@/components/MasonryGallery/ImageActionsOverlay';
+import ImageActionsOverlay from '@/components/ImageCard/ImageActionsOverlay';
 import { tooltipConfig } from '@/interfaces';
 
 type WrapperGalleryProps = {

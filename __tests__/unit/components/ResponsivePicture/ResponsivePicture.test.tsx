@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ResponsivePicture from '@/components/ResponsivePicture/ResponsivePicture';
-import mockSourceData from '@/mocks/mockSourceData';
+import mockSourceData from '../../__mocks__/mockSourceData';
 
 describe('ResponsivePicture', () => {
 	const imgSrc =

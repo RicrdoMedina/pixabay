@@ -1,5 +1,5 @@
 import ButtonBuilder from '@/lib/Builder/ButtonBuilder';
-import MockButton from '@/mocks/dummyData/MockButton';
+import MockButton from '../../__mocks__/MockButton';
 
 describe('ButtonBuilder.ts', () => {
   let onClickMock: jest.Mock;

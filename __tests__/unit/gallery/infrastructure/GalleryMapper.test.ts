@@ -1,5 +1,5 @@
 import { mapGalleryData } from '@/gallery/infrastructure/GalleryMapper';
-import mockGalleryItems from '@/mocks/mockGalleryItems';
+import mockGalleryItems from '../../__mocks__/mockGalleryItems';
 
 describe('GalleryMapper.ts', () => {
 	test('should correctly map API data to GalleryEntity', () => {

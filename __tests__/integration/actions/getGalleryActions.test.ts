@@ -2,7 +2,7 @@ import { getGalleryActions } from '@/actions/galleryActions';
 import { getGalleryItemsUseCase } from '@/gallery/dependencyInjection/DependencyInjection';
 import Http from '@/lib/Http';
 import MockAdapter from 'axios-mock-adapter';
-import mockGalleryItems from '@/mocks/mockGalleryItems';
+import mockGalleryItems from '../../unit/__mocks__/mockGalleryItems';
 
 describe('getGalleryActions Integration Test', () => {
 	let mockAxios: MockAdapter;

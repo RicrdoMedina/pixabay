@@ -1,5 +1,5 @@
 import { GetGalleryItems } from '@/gallery/application/GetGalleryItems';
-import mockGalleryItems from '@/mocks/mockGalleryItems';
+import mockGalleryItems from '../../__mocks__/mockGalleryItems';
 
 describe('GetGalleryItems Use Case', () => {
 	test('should get images correctly', async () => {

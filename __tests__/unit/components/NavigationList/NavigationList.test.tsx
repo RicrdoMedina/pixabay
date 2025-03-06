@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import NavigationList from '@/components/NavigationList/NavigationList';
-import MockButton from '@/mocks/dummyData/MockButton';
+import MockButton from '../../__mocks__/MockButton';
 
 describe('NavigationList', () => {
 	let onClickMock: jest.Mock;
