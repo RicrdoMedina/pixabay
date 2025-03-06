@@ -26,7 +26,7 @@ export default async function HomePage() {
 			<Banner
 				categoryItems={categoryItems}
 				subCategoryItems={subCategoryItems}
-			/> 
+			/>
 			<main>
 				<div className="w-full py-10 px-4 md:px-8 3xl:px-20">
 					<div className="w-full hidden lg:block">

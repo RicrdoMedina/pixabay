@@ -1,18 +1,26 @@
-import ImageCard from "@/components/MasonryGallery/ImageCard";
-import { GalleryEntity } from "@/gallery/domain/GalleryEntity";
+import React from 'react';
 
-type GalleryProps = {
-  items: GalleryEntity[];
+type MasonryGalleryProps<T> = {
+  items: T[];
+  renderItem: (item: T) => React.ReactNode;
+  className?: string;
 };
 
-const MasonryGallery: React.FC<GalleryProps> = ({ items }) => {
-	return (
-		<div className="columns md:columns-2 lg:columns-3 xl:columns-4 gap-4" data-testid="masonry-gallery">
-			{items.map(image => (
-				<ImageCard key={image.id} image={image} />
-			))}
-		</div>
-	);
+const MasonryGallery = <T,>({ items, renderItem, className }: MasonryGalleryProps<T>) => {
+  return (
+    <div
+      className={className}
+      data-testid="masonry-gallery"
+      role="grid"
+      aria-label="Image gallery"
+    >
+      {items.map((item, index) => (
+        <div key={index} className="mb-4 break-inside-avoid">
+          {renderItem(item)}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default MasonryGallery;

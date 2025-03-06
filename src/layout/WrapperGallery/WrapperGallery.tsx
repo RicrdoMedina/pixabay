@@ -9,6 +9,13 @@ import { selectSubFilter } from '@/store/slices/subFilterSlice';
 import { mapItemsToButtons } from '@/lib/map/mapItemsToButtons';
 import Button from '@/components/Button/Button';
 import ButtonBuilder from '@/lib/Builder/ButtonBuilder';
+import { galleryStyles } from '@/config/home/galleryStyles';
+import { HeartIcon } from '@heroicons/react/24/solid';
+import { BookmarkIcon } from '@heroicons/react/24/solid';
+import MedalIcon from '@/components/Svg/MedalIcon';
+import ImageCard from '@/components/ImageCard/ImageCard';
+import ImageActionsOverlay from '@/components/MasonryGallery/ImageActionsOverlay';
+import { tooltipConfig } from '@/interfaces';
 
 type WrapperGalleryProps = {
 	items: GalleryEntity[];
@@ -31,15 +38,45 @@ const WrapperGallery: React.FC<WrapperGalleryProps> = ({
 		selectedItem,
 		'id',
 		'name',
-		'w-full md:w-auto py-1 md:py-0 px-3 md:px-4 rounded-full flex items-center justify-center font-sans text-sm text-regular font-bold h-8',
-		'hover:bg-white',
-		'bg-white text-black',
+		galleryStyles.button.default,
+		galleryStyles.button.inactive,
+		galleryStyles.button.active,
 		Button,
 		ButtonBuilder,
 		handleClick
 	);
 
-	function handleClick(id:number) {
+	const tooltipToRender: tooltipConfig[] = [
+		{
+			id: '1',
+			content: 'Like',
+			place: 'bottom',
+			icon: HeartIcon,
+			iconClassName: galleryStyles.tooltip.fav.icon,
+			onClick: () => undefined,
+			className: galleryStyles.tooltip.fav.default,
+		},
+		{
+			id: '2',
+			content: 'Add to collection',
+			place: 'bottom',
+			icon: BookmarkIcon,
+			iconClassName: galleryStyles.tooltip.add.icon,
+			onClick: () => undefined,
+			className: galleryStyles.tooltip.add.default,
+		},
+		{
+			id: '3',
+			content: "Edit's Choice",
+			place: 'bottom',
+			icon: MedalIcon,
+			iconClassName: galleryStyles.tooltip.edit.icon,
+			onClick: () => undefined,
+			className: galleryStyles.tooltip.edit.default,
+		},
+	];
+
+	function handleClick(id: number) {
 		dispatch(selectSubFilter(id));
 	}
 
@@ -66,8 +103,21 @@ const WrapperGallery: React.FC<WrapperGalleryProps> = ({
 				className="w-full pt-4 overflow-hidden"
 				style={{ maxHeight: '1112px' }}
 			>
-				<MasonryGallery items={items} />
+				<MasonryGallery
+					items={items}
+					renderItem={item => (
+						<ImageCard
+							image={item}
+							overlay={<ImageActionsOverlay tooltips={tooltipToRender} />}
+						/>
+					)}
+					className="columns md:columns-2 lg:columns-3 xl:columns-4 gap-4"
+				/>
 			</div>
+			<Button
+				className="flex items-center justify-center border text-sm border-light hover:border-bold py-2 px-4 text-light hover:text-bold font-sans font-semibold rounded-full mx-auto mb-2 z-20 relative hover:bg-[rgba(25,27,38,0.04)] ease-in-out transition-all duration-500"
+				label="Discover more"
+			/>
 			<div className="absolute bottom-0 left-0 w-full flex items-end justify-center p-6 h-48 z-10 bg-gradient-to-b from-transparent to-white"></div>
 		</section>
 	);

@@ -19,7 +19,7 @@ import { SubCategoryEntity } from '@/subcategory/domain/SubCategoryEntity';
 import useResponsiveSlider from '@/hooks/useResponsiveSlider';
 import ResponsivePicture from '@/components/ResponsivePicture/ResponsivePicture';
 import Button from '@/components/Button/Button';
-
+import { bannerStyles } from '@/config/home/bannerStyles';
 
 type BannerProps = {
 	categoryItems: CategoryEntity[];
@@ -36,14 +36,14 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 		(state: RootState) => state.subCategory.selectedItem
 	);
 
-	const componentsToRender = mapItemsToButtons(
+	const componentsNavigation = mapItemsToButtons(
 		categoryItems,
 		selectedCategory,
 		"categoryId",
 		"categoryName",
-		'w-auto h-10 mx-1 px-4 bg-transparent flex items-center justify-center font-sans font-bold text-sm rounded-3xl whitespace-nowrap',
-		'text-white hover:bg-white-opacity-30',
-		'bg-white text-black',
+		bannerStyles.navigation.button.default,
+		bannerStyles.navigation.button.inactive,
+		bannerStyles.navigation.button.active,
 		Button,
 		ButtonBuilder,
 		handleCategoryClick
@@ -55,9 +55,9 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 		selectedSubCategory,
 		"subCategoryId",
 		"subCategoryName",
-		'w-auto py-2 px-4 bg-[hsla(0,0%,100%,0.24)] backdrop-blur-[20px] hover:bg-[hsla(0,0%,100%,0.32)] ease-in-out transition-all duration-500 flex items-center justify-center text-white font-sans text-sm rounded-xl',
-		'',
-		'',
+		bannerStyles.slider.button.default,
+		bannerStyles.slider.button.inactive,
+		bannerStyles.slider.button.active,
 		Button,
 		ButtonBuilder,
 		handleSubCategoryClick
@@ -86,13 +86,13 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 				</Heading>
 				<div className="w-full mt-4 flex items-center justify-center">
 					<NavigationList
-						components={componentsToRender}
+						components={componentsNavigation}
 						wrapperClasses="hidden md:flex"
 						containerClasses="flex items-start justify-between"
 					/>
 					<ContainerSwiper
 						className="container-swiper container-swiper__banner w-full relative flex md:hidden"
-						components={componentsToRender}
+						components={componentsNavigation}
 						itemsToShow={categorySwiper.itemsToShow}
 						slidesPerGroup={categorySwiper.slidesPerGroup}
 						customNavigation={false}
