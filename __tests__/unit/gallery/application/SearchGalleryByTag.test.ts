@@ -1,5 +1,4 @@
 import { SearchGalleryByTag } from '@/gallery/application/SearchGalleryByTag';
-import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
 import mockGalleryItems from '../../__mocks__/mockGalleryItems';
 
 describe('GetGalleryItems Use Case', () => {
@@ -13,8 +12,8 @@ describe('GetGalleryItems Use Case', () => {
 		const searchGalleryByTag = SearchGalleryByTag(mockSearchGalleryByTag);
 		const result = await searchGalleryByTag(queryParams);
 		expect(mockSearchGalleryByTag).toHaveBeenCalledTimes(1);
-		expect(result).toHaveLength(2);
-		expect(result[0].id).toBe(9382636);
+		expect(result).toHaveLength(3);
+		expect(result[0].id).toBe(9435827);
 		expect(result[0].tags).toContain('nature');
 	});
 

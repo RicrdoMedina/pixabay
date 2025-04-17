@@ -28,7 +28,7 @@ describe('ResponsivePicture', () => {
 		expect(imgElement.alt).toBe(alt);
 	});
 
-	test('renders <source> elements correctly', async () => {
+	test('should renders <source> elements correctly', async () => {
 		const { container } = render(
 			<ResponsivePicture sources={mockSourceData} imgSrc={imgSrc} alt={alt} />
 		);

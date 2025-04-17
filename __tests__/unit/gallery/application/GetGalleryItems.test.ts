@@ -8,8 +8,8 @@ describe('GetGalleryItems Use Case', () => {
 		const getGalleryItems = GetGalleryItems(mockFetchAll);
 		const result = await getGalleryItems();
 		expect(mockFetchAll).toHaveBeenCalledTimes(1);
-		expect(result).toHaveLength(2);
-		expect(result[0].id).toBe(9382636);
+		expect(result).toHaveLength(3);
+		expect(result[0].id).toBe(9435827);
 		expect(result[0].tags).toContain('nature');
 	});
 

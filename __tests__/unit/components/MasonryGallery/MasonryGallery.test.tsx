@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import MasonryGallery from '@/components/MasonryGallery/MasonryGallery';
 
-describe('MasonryGallery Component', () => {
+describe('MasonryGallery', () => {
   const renderItem = (item: { id: string; name: string }) => (
     <div data-testid="item">{item.name}</div>
   );
@@ -12,7 +12,7 @@ describe('MasonryGallery Component', () => {
     { id: '2', name: 'Item 2' },
   ];
 
-  test('Should render the MasonryGallery component with elements', () => {
+  test('should render the MasonryGallery component with elements', () => {
     render(
       <MasonryGallery
         items={mockItems}

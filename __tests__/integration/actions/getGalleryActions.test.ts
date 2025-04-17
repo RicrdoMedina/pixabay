@@ -3,6 +3,7 @@ import { getGalleryItemsUseCase } from '@/gallery/dependencyInjection/Dependency
 import Http from '@/lib/Http';
 import MockAdapter from 'axios-mock-adapter';
 import mockGalleryItems from '../../unit/__mocks__/mockGalleryItems';
+import mockGalleryApi from '../../unit/__mocks__/mockGalleryApi';
 
 describe('getGalleryActions Integration Test', () => {
 	let mockAxios: MockAdapter;
@@ -17,7 +18,7 @@ describe('getGalleryActions Integration Test', () => {
 
 	test('should return gallery items when API responds correctly', async () => {
 
-		mockAxios.onGet('/gallery').reply(200, { data: { hits: mockGalleryItems } });
+		mockAxios.onGet('/gallery').reply(200, { data: { hits: mockGalleryApi } });
 
 		const result = await getGalleryActions(getGalleryItemsUseCase);
 

@@ -24,8 +24,8 @@ const TooltipIconButton: FC<TooltipIconButtonProps> = ({
 	onClick,
 }) => {
 	return (
-		<div className={className} data-tooltip-id={tooltipConfig.id}>
-			<button className='w-full h-full flex items-center justify-center' onClick={onClick} type="button">
+		<div className={className} data-tooltip-id={tooltipConfig.id} data-testid={`tooltip-container-${tooltipConfig.id}`}>
+			<button className='w-full h-full flex items-center justify-center' onClick={onClick} type="button" data-testid={`tooltip-icon-button-${tooltipConfig.id}`}>
 				<Icon className={iconClassName} />
 			</button>
 			<Tooltip

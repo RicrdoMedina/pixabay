@@ -52,7 +52,6 @@ export default class Services {
 
   static post(url: string, data: any, token?: string): AxiosPromise {
     const requestConfig = this._buildRequestConfig("post", url, data, token);
-    console.log("Request Config:", requestConfig); 
     return this.api(requestConfig);
   }
 

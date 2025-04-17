@@ -8,17 +8,29 @@ type ImageCardProps = {
 
 const ImageCard: React.FC<ImageCardProps> = ({ image, overlay: Overlay }) => {
 	return (
-		<div className="break-inside-avoid relative mb-4 overflow-hidden shadow-lg group cursor-pointer">
-			<Link className="w-full h-full" href="/">
+		<div
+			className="break-inside-avoid relative mb-4 overflow-hidden shadow-lg group cursor-pointer"
+			data-testid="image-card"
+		>
+			<Link className="w-full h-full" href={image.url}>
 				<div className="w-full h-full">
-					{Overlay && <>{Overlay}</>}
+					{Overlay && image.verified && <>{Overlay}</>}
 
-					<img
-						data-testid="image-card"
-						src={image.largeImageURL}
-						alt={image.type}
-						className="w-full h-auto object-cover"
-					/>
+					{image.verified ? (
+						<img
+							src={image.largeImageURL}
+							alt={image.tags}
+							className="w-full h-auto object-cover"
+						/>
+					) : (
+						<div
+							className="w-full h-48 bg-gray-200 flex items-center justify-center"
+							role="img"
+							aria-label="No image available"
+						>
+							<span className="text-gray-500">No image available</span>
+						</div>
+					)}
 				</div>
 			</Link>
 		</div>

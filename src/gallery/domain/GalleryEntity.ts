@@ -1,6 +1,7 @@
 export interface GalleryEntity {
 	id: number;
 	type: string;
+	url: string;
 	tags: string;
 	previewURL: string;
 	previewWidth: number;
@@ -23,4 +24,5 @@ export interface GalleryEntity {
 	userImageURL: string;
 	pageURL: string;
 	collections: number
+	verified: boolean
 }
