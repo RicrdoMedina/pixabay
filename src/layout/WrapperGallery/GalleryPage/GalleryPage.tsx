@@ -1,8 +1,8 @@
 'use client';
 
 import WrapperGallery from '@/layout/WrapperGallery/WrapperGallery';
-import { withGallerySync } from '@/hoc/withGallerySync';
-import { setInitialGalleryItems } from '@/store/slices/gallerySlice';
+import { withGallerySync } from '@/hoc/with-gallery-sync';
+import { setInitialGalleryItems } from '@/store/slices/gallery/gallery-slice';
 import { RootState } from '@/store/store';
 import { GalleryEntity } from '@/gallery/domain/gallery-entity';
 

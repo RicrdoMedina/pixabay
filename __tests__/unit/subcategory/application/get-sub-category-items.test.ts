@@ -1,28 +1,33 @@
-import { GetSubCategoryItems } from '@/subcategory/application/get-sub-category-items';
+import { makeGetSubCategoryItems } from '@/subcategory/application/get-sub-category-items';
 import { SubCategoryEntity } from '@/subcategory/domain/sub-category-entity';
 import { subCategoryData } from '@/mocks/dummy-data/sub-category-data';
+import { SubCategoryRepository } from '@/subcategory/domain/sub-category-repository';
 
-describe('GetSubCategoryItems Use Case', () => {
+describe('makeGetSubCategoryItems Unit Test', () => {
 	test('should get subcategory correctly', async () => {
 		const mockSubCategoryItems: SubCategoryEntity[] = subCategoryData;
 
-		const mockFetchAll = jest.fn().mockResolvedValue(mockSubCategoryItems);
+		const repository: jest.Mocked<SubCategoryRepository> = {
+			fetchAll: jest.fn().mockResolvedValue(mockSubCategoryItems),
+		};
 
-		const getSubCategoryItems = GetSubCategoryItems(mockFetchAll);
+		const getSubCategoryItems = makeGetSubCategoryItems(repository);
 		const result = await getSubCategoryItems();
 
-		expect(mockFetchAll).toHaveBeenCalledTimes(1);
+		expect(repository.fetchAll).toHaveBeenCalledTimes(1);
 		expect(result).toHaveLength(40);
 		expect(result[0].subCategoryId).toBe(1);
 		expect(result[0].subCategoryName).toBe('nature');
 	});
 
-  test("should handle errors correctly", async () => {
-    const mockFetchAll = jest.fn().mockRejectedValue(new Error('API Error'));
+	test('should handle errors correctly', async () => {
+		const repository: jest.Mocked<SubCategoryRepository> = {
+			fetchAll: jest.fn().mockRejectedValue(new Error('API Error')),
+		};
 
-    const getSubCategoryItems = GetSubCategoryItems(mockFetchAll);
-    
-    await expect(getSubCategoryItems()).rejects.toThrow('API Error');
-    expect(mockFetchAll).toHaveBeenCalledTimes(1)
-  })
+		const getSubCategoryItems = makeGetSubCategoryItems(repository);
+
+		await expect(getSubCategoryItems()).rejects.toThrow('API Error');
+		expect(repository.fetchAll).toHaveBeenCalledTimes(1);
+	});
 });

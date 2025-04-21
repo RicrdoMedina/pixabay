@@ -1,3 +1,4 @@
+import { ISubFiler } from '@/interfaces';
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface SubFilterEntity {
@@ -11,13 +12,15 @@ type SubItemsState = {
 	selectedItem: number;
 };
 
+const items:ISubFiler[]=  [
+	{ id: 1, name: 'Trending', slug: 'trending' },
+	{ id: 2, name: "Editor's Choice", slug: 'ec' },
+	{ id: 3, name: 'Latest', slug: 'latest' },
+]
+
 const initialState: SubItemsState = {
 	selectedItem: 1,
-	items: [
-		{ id: 1, name: 'Trending', slug: 'trending' },
-		{ id: 2, name: "Editor's Choice", slug: 'ec' },
-		{ id: 3, name: 'Latest', slug: 'latest' },
-	],
+	items
 };
 
 const subFilterSlice = createSlice({

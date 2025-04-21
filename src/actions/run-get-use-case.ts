@@ -6,7 +6,7 @@ export async function runGetUseCase<T>(
   try {
     return await useCase();
   } catch (error) {
-    console.error(error);
+   // console.error(error);
     return [];
   }
 }

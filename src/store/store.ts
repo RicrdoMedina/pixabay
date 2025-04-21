@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from '@/store/slices/couterSlice'
-import galleryReducer from '@/store/slices/gallerySlice'
-import categoryReducer from "@/store/slices/categorySlice"
-import subCategoryReducer from "@/store/slices/subCategorySlice"
-import subFilterReducer from "@/store/slices/subFilterSlice"
+import counterReducer from '@/store/slices/couter-slice'
+import galleryReducer from '@/store/slices/gallery/gallery-slice'
+import categoryReducer from "@/store/slices/category/category-slice"
+import subCategoryReducer from "@/store/slices/subcategory/sub-category-clice"
+import subFilterReducer from "@/store/slices/sub-filter/sub-filter-slice"
 
 export const store = configureStore({
   reducer: {

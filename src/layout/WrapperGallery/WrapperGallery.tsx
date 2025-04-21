@@ -5,7 +5,7 @@ import NavigationList from '@/components/NavigationList/NavigationList';
 import { GalleryEntity } from '@/gallery/domain/gallery-entity';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/store';
-import { selectSubFilter } from '@/store/slices/subFilterSlice';
+import { selectSubFilter } from '@/store/slices/sub-filter/sub-filter-slice';
 import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
 import Button from '@/components/Button/Button';
 import ButtonBuilder from '@/lib/builder/button-builder';

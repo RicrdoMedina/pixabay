@@ -6,6 +6,8 @@ const axiosInstance: AxiosInstance = axios.create({
   baseURL: API_URL,
 });
 
+export { axiosInstance };
+
 export const HttpClient: ApiClient = {
   get: (url: string) => axiosInstance.get(url).then((r: AxiosResponse) => r),
   post: <T = unknown>(url: string, data?: any, config?: any) =>

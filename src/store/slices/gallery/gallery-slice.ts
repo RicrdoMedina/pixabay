@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { GalleryEntity } from '@/gallery/domain/gallery-entity';
 
 type GalleryState = {
@@ -32,33 +32,8 @@ const gallerySlice = createSlice({
 				item => item.id !== action.payload.id
 			);
 		},
-	},
-  extraReducers: (builder) => {
-    builder
-      .addCase(fetchGalleryItems.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(fetchGalleryItems.fulfilled, (state, action) => {
-        state.status = "succeeded";
-        state.items = action.payload;
-      })
-      .addCase(fetchGalleryItems.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.payload as string;
-      });
-  },
+	}
 });
-
-export const fetchGalleryItems = createAsyncThunk(
-  "gallery/fetchGalleryItems",
-  async (_, { rejectWithValue }) => {
-    try {
-      //return await galleryUseCase.getAll();
-    } catch (error: any) {
-      //return rejectWithValue(error.message);
-    }
-  }
-);
 
 export const { addFavorite, removeFavorite,setInitialGalleryItems } = gallerySlice.actions;
 export default gallerySlice.reducer;

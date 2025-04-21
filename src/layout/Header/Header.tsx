@@ -9,8 +9,8 @@ import UploadIcon from '@/components/Svg/UploadIcon';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Logo from '@/components/Svg/Logo';
 import MobileLogo from '@/components/Svg/MobileLogo';
-import useMobile from '@/hooks/useIsMobile';
-import useScrollDirection from '@/hooks/useScrollDirection';
+import useMobile from '@/hooks/use-is-mobile';
+import useScrollDirection from '@/hooks/use-scroll-direction';
 
 const Header = () => {
 	const isScrollingDown = useScrollDirection(10);

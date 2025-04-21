@@ -2,7 +2,7 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "@/store/store";
-import { increment, decrement, incrementByAmount } from "@/store/slices/couterSlice";
+import { increment, decrement, incrementByAmount } from "@/store/slices/couter-slice";
 
 export default function CounterPage() {
   const dispatch = useDispatch<AppDispatch>();
