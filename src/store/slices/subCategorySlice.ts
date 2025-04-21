@@ -1,4 +1,4 @@
-import { SubCategoryEntity } from '@/subcategory/domain/SubCategoryEntity';
+import { SubCategoryEntity } from '@/subcategory/domain/sub-category-entity';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type SubCategoryState = {

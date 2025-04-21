@@ -1,5 +1,5 @@
-import { mapItemsToButtons } from '@/lib/map/mapItemsToButtons';
-import ButtonBuilder from '@/lib/Builder/ButtonBuilder';
+import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
+import ButtonBuilder from '@/lib/builder/button-builder';
 import Button from '@/components/Button/Button';
 import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';

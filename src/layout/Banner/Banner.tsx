@@ -3,23 +3,23 @@ import React from 'react';
 import {
 	categorySwiperConfig,
 	subCategorySwiperConfig,
-} from '@/config/swiperConfig';
+} from '@/config/swiper-config';
 import Heading from '@/components/Heading/Heading';
 import NavigationList from '@/components/NavigationList/NavigationList';
 import SearchBarDropdown from '@/components/SearchBarDropdown/SearchBarDropdown';
 import ContainerSwiper from '@/components/ContainerSwiper/ContainerSwiper';
-import { CategoryEntity } from '@/category/domain/CategoryEntity';
-import ButtonBuilder from '@/lib/Builder/ButtonBuilder';
-import { mapItemsToButtons } from '@/lib/map/mapItemsToButtons';
+import { CategoryEntity } from '@/category/domain/category-entity';
+import ButtonBuilder from '@/lib/builder/button-builder';
+import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/store';
 import { selectCategory } from '@/store/slices/categorySlice';
 import { selectSubCategory } from '@/store/slices/subCategorySlice';
-import { SubCategoryEntity } from '@/subcategory/domain/SubCategoryEntity';
+import { SubCategoryEntity } from '@/subcategory/domain/sub-category-entity';
 import useResponsiveSlider from '@/hooks/useResponsiveSlider';
 import ResponsivePicture from '@/components/ResponsivePicture/ResponsivePicture';
 import Button from '@/components/Button/Button';
-import { bannerStyles } from '@/config/home/bannerStyles';
+import { bannerStyles } from '@/config/home/banner-styles';
 
 type BannerProps = {
 	categoryItems: CategoryEntity[];

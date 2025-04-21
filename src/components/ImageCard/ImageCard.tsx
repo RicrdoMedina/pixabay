@@ -1,4 +1,4 @@
-import { GalleryEntity } from '@/gallery/domain/GalleryEntity';
+import { GalleryEntity } from '@/gallery/domain/gallery-entity';
 import Link from 'next/link';
 
 type ImageCardProps = {

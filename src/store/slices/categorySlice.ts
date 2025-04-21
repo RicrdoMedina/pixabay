@@ -1,4 +1,4 @@
-import { CategoryEntity } from '@/category/domain/CategoryEntity';
+import { CategoryEntity } from '@/category/domain/category-entity';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type CategoryState = {

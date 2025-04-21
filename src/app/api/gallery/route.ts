@@ -1,4 +1,4 @@
-import Services from "@/lib/Services";
+import Services from "@/lib/services";
 
 const API_URL = process.env.SERVER_API_URL!;
 const API_KEY = process.env.PIXABAY_API_KEY!;

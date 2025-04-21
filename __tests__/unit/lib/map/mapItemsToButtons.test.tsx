@@ -1,4 +1,4 @@
-import { mapItemsToButtons } from '@/lib/map/mapItemsToButtons';
+import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
 import MockButton from '../../__mocks__/MockButton';
 
 describe('mapItemsToButtons.ts', () => {

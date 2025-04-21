@@ -1,12 +1,10 @@
 import Header from '@/layout/Header/Header';
 import Banner from '@/layout/Banner/Banner';
-import { getCategoryActions } from '@/actions/categoryActions';
-import { getGalleryItemsUseCase } from '@/gallery/dependencyInjection/DependencyInjection';
-import { getGalleryActions } from '@/actions/galleryActions';
+import { runGetUseCase } from '@/actions/run-get-use-case';
 import GalleryPage from '@/layout/WrapperGallery/GalleryPage/GalleryPage';
-import { getCategoryItemsUseCase } from '@/category/dependencyInjection/DependencyInjection';
-import { getSubCategoryActions } from '@/actions/subCategoryActions';
-import { getSubCategoryItemsUseCase } from '@/subcategory/dependencyInjection/DependencyInjection';
+import { getCategoryItemsUseCase } from '@/category/infrastructure';
+import { getGalleryItemsUseCase } from '@/gallery/infrastructure';
+import { getSubCategoryItemsUseCase } from '@/subcategory/infrastructure';
 import ParagraphWrapper from '@/components/ParagraphWrapper/ParagraphWrapper';
 import Paragraph from '@/components/Paragraph/Paragraph';
 import { HeartIcon } from '@heroicons/react/24/solid';
@@ -15,9 +13,9 @@ import Footer from '@/layout/Footer/Footer';
 
 export default async function HomePage() {
 	const [galleryItems, categoryItems, subCategoryItems] = await Promise.all([
-		getGalleryActions(getGalleryItemsUseCase),
-		getCategoryActions(getCategoryItemsUseCase),
-		getSubCategoryActions(getSubCategoryItemsUseCase),
+		runGetUseCase(getGalleryItemsUseCase),
+		runGetUseCase(getCategoryItemsUseCase),
+		runGetUseCase(getSubCategoryItemsUseCase),
 	]);
 
 	return (
