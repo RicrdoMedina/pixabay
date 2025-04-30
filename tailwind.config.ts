@@ -42,29 +42,37 @@ export default {
 				50: '50rem',
 			},
 			maxWidth: {
-        '72': '72rem',
-        '90': '90rem',
-        'content': '65ch',
-      },
+				'72': '72rem',
+				'90': '90rem',
+				content: '65ch',
+			},
+			minWidth: {
+				'560px':'600px',
+				'800px':'800px',
+				'1000px':'1000px'
+			},
+			minHeight: {
+				'500px':'500px',
+			},
 		},
 		screens: {
-      sm: "640px",
-      // => @media (min-width: 640px) { ... }
+			sm: '640px',
+			// => @media (min-width: 640px) { ... }
 
-      md: "768px",
-      // => @media (min-width: 768px) { ... }
+			md: '768px',
+			// => @media (min-width: 768px) { ... }
 
-      lg: "1024px",
-      // => @media (min-width: 1024px) { ... }
+			lg: '1024px',
+			// => @media (min-width: 1024px) { ... }
 
-      xl: "1280px",
-      // => @media (min-width: 1280px) { ... }
+			xl: '1280px',
+			// => @media (min-width: 1280px) { ... }
 
-      "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
-      "3xl": "1732px",
-      // => @media (min-width: 1732px) { ... }
-    },
+			'2xl': '1536px',
+			// => @media (min-width: 1536px) { ... }
+			'3xl': '1732px',
+			// => @media (min-width: 1732px) { ... }
+		},
 	},
 	plugins: [],
 } satisfies Config;
