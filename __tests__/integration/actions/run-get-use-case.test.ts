@@ -26,6 +26,14 @@ describe('runGetUseCase Integration Test', () => {
 		//console.log('Solicitudes interceptadas:', mockAxios.history.get);
 	});
 
+	test('Should handle unexpected responses and return an empty array', async () => {
+		mockAxios.onGet('/gallery').reply(200, {});
+
+		const result = await runGetUseCase(getGalleryItemsUseCase);
+
+		expect(result).toEqual([]);
+	});
+
 	test('should handle errors and return an empty array when the API fails', async () => {
 		mockAxios.onGet('/gallery').reply(500, 'Internal Server Error');
 
