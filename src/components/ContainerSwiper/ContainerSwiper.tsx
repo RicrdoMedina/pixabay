@@ -1,6 +1,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import Button from '@/components/Button/Button';
 import ArrowLeftIcon from '@/components/Svg/ArrowLeftIcon';
 import ArrowRightIcon from '@/components/Svg/ArrowRightIcon';
 import 'swiper/css';
@@ -77,28 +78,26 @@ const ContainerSwiper: React.FC<SwiperProps> = ({
 					{components.map(({ component: Component, props }, index) => (
 						<SwiperSlide key={index} data-testid={`slide-${index}`}>
 							<div className="w-full flex items-center justify-center">
-								<Component key={index} {...props} />
+								<Component {...props} />
 							</div>
 						</SwiperSlide>
 					))}
 				</Swiper>
 				{customNavigation && !isPrevDisabled && (
-					<button
+					<Button
 						onClick={handlePrev}
 						className="absolute container-swiper__swiper-button-prev z-50 cursor-pointer w-10 h-10 rounded-full -left-10 top-1/2 transform -translate-y-1/2 p-2 ease-in-out transition-all duration-500 hidden md:flex"
-						data-testid="prev-button"
-					>
-						<ArrowLeftIcon />
-					</button>
+						icon={<ArrowLeftIcon />}
+						iconPosition="left"
+					/>
 				)}
 				{customNavigation && !isNextDisabled && (
-					<button
+					<Button
 						onClick={handleNext}
 						className="absolute container-swiper__swiper-button-next z-50 cursor-pointer w-10 h-10 rounded-full -right-10 top-1/2 transform -translate-y-1/2  p-2 ease-in-out transition-all duration-500 hidden md:flex"
-						data-testid="next-button"
-					>
-						<ArrowRightIcon />
-					</button>
+						icon={<ArrowRightIcon />}
+						iconPosition="left"
+					/>
 				)}
 			</div>
 		</div>

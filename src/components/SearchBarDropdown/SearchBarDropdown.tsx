@@ -10,7 +10,7 @@ type SearchBarDropdownProps = {
 	placeholder?: string;
 	colorIcon?:string,
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 	dropdownButtonDisabled?: boolean;
 };
 

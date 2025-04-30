@@ -10,7 +10,6 @@ import SearchBarDropdown from '@/components/SearchBarDropdown/SearchBarDropdown'
 import ContainerSwiper from '@/components/ContainerSwiper/ContainerSwiper';
 import { CategoryEntity } from '@/category/domain/category-entity';
 import ButtonBuilder from '@/lib/builder/button-builder';
-import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/store';
 import { selectCategory } from '@/store/slices/category/category-slice';
@@ -20,6 +19,7 @@ import useResponsiveSlider from '@/hooks/use-responsive-slider';
 import ResponsivePicture from '@/components/ResponsivePicture/ResponsivePicture';
 import Button from '@/components/Button/Button';
 import { bannerStyles } from '@/config/home/banner-styles';
+import { createComponents } from '@/lib/utils';
 
 type BannerProps = {
 	categoryItems: CategoryEntity[];
@@ -36,32 +36,27 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 		(state: RootState) => state.subCategory.selectedItem
 	);
 
-	const componentsNavigation = mapItemsToButtons(
-		categoryItems,
-		selectedCategory,
-		"categoryId",
-		"categoryName",
-		bannerStyles.navigation.button.default,
-		bannerStyles.navigation.button.inactive,
-		bannerStyles.navigation.button.active,
-		Button,
-		ButtonBuilder,
-		handleCategoryClick
-	);
+	const componentsNavigation = createComponents({
+		items: categoryItems,
+		selectedItem: selectedCategory,
+		idKey: 'categoryId',
+		nameKey: 'categoryName',
+		styles: bannerStyles.navigation.button,
+		onClick: handleCategoryClick,
+		ButtonComponent: Button,
+		ButtonBuilderClass: ButtonBuilder,
+	});
 
-
-	const componentsSlider = mapItemsToButtons(
-		subCategoryItems,
-		selectedSubCategory,
-		"subCategoryId",
-		"subCategoryName",
-		bannerStyles.slider.button.default,
-		bannerStyles.slider.button.inactive,
-		bannerStyles.slider.button.active,
-		Button,
-		ButtonBuilder,
-		handleSubCategoryClick
-	);
+	const componentsSlider = createComponents({
+		items: subCategoryItems,
+		selectedItem: selectedSubCategory,
+		idKey: 'subCategoryId',
+		nameKey: 'subCategoryName',
+		styles: bannerStyles.slider.button,
+		onClick: handleSubCategoryClick,
+		ButtonComponent: Button,
+		ButtonBuilderClass: ButtonBuilder,
+	});
 
 	const subCategorySwiper = useResponsiveSlider(subCategorySwiperConfig);
 
@@ -74,6 +69,8 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 	function handleSubCategoryClick(subCategoryId: number) {
 		dispatch(selectSubCategory(subCategoryId));
 	}
+
+	function handleClick() {}
 
 	return (
 		<section className="w-full relative py-12 md:py-20 lg:py-32 px-4 md:px-24 select-none">
@@ -105,6 +102,7 @@ const Banner: React.FC<BannerProps> = ({ categoryItems, subCategoryItems }) => {
 						placeholder="Search for free Images, Videos, Music & more"
 						dropdownButtonDisabled={true}
 						colorIcon="white"
+						onClick={handleClick}
 					/>
 				</div>
 				<div className="w-full relative">

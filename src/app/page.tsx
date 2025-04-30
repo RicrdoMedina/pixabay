@@ -10,6 +10,7 @@ import Paragraph from '@/components/Paragraph/Paragraph';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import Button from '@/components/Button/Button';
 import Footer from '@/layout/Footer/Footer';
+import { ModalProvider } from '@/components/Modal/ModalProvider';
 
 export default async function HomePage() {
 	const [galleryItems, categoryItems, subCategoryItems] = await Promise.all([
@@ -68,6 +69,7 @@ export default async function HomePage() {
 				</div>
 				<Footer />
 			</main>
+			<ModalProvider/>
 		</div>
 	);
 }

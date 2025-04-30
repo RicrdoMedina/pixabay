@@ -1,4 +1,4 @@
-import React from "react";
+import React, { JSX } from "react";
 
 type HeadingProps = {
   level?: 1 | 2 | 3 | 4 | 5;

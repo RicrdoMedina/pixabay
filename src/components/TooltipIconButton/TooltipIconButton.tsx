@@ -1,10 +1,11 @@
 import { FC, ComponentType } from 'react';
-import { Tooltip } from 'react-tooltip';
+import { PlacesType, Tooltip } from 'react-tooltip';
+import Button from '@/components/Button/Button';
 import 'react-tooltip/dist/react-tooltip.css';
 
 type TooltipWithProps = {
 	id: string;
-	place: 'bottom';
+	place: PlacesType;
 	content: string;
 };
 
@@ -24,10 +25,19 @@ const TooltipIconButton: FC<TooltipIconButtonProps> = ({
 	onClick,
 }) => {
 	return (
-		<div className={className} data-tooltip-id={tooltipConfig.id} data-testid={`tooltip-container-${tooltipConfig.id}`}>
-			<button className='w-full h-full flex items-center justify-center' onClick={onClick} type="button" data-testid={`tooltip-icon-button-${tooltipConfig.id}`}>
-				<Icon className={iconClassName} />
-			</button>
+		<div
+			className={className}
+			data-tooltip-id={tooltipConfig.id}
+			data-testid={`tooltip-container-${tooltipConfig.id}`}
+		>
+			<Button
+				className="w-full h-full flex items-center justify-center"
+				onClick={onClick}
+				type="button"
+				dataTestid={`tooltip-icon-button-${tooltipConfig.id}`}
+				iconPosition="left"
+				icon={<Icon className={iconClassName} />}
+			/>
 			<Tooltip
 				id={tooltipConfig.id}
 				place={tooltipConfig.place}

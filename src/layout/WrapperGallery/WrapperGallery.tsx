@@ -6,7 +6,6 @@ import { GalleryEntity } from '@/gallery/domain/gallery-entity';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState, AppDispatch } from '@/store/store';
 import { selectSubFilter } from '@/store/slices/sub-filter/sub-filter-slice';
-import { mapItemsToButtons } from '@/lib/map/map-items-to-buttons';
 import Button from '@/components/Button/Button';
 import ButtonBuilder from '@/lib/builder/button-builder';
 import { galleryStyles } from '@/config/home/gallery-styles';
@@ -16,6 +15,7 @@ import MedalIcon from '@/components/Svg/MedalIcon';
 import ImageCard from '@/components/ImageCard/ImageCard';
 import ImageActionsOverlay from '@/components/ImageCard/ImageActionsOverlay';
 import { tooltipConfig } from '@/interfaces';
+import { createComponents } from '@/lib/utils';
 
 type WrapperGalleryProps = {
 	items: GalleryEntity[];
@@ -33,18 +33,16 @@ const WrapperGallery: React.FC<WrapperGalleryProps> = ({
 		(state: RootState) => state.subFilter
 	);
 
-	const componentsToRender = mapItemsToButtons(
-		subFilters,
-		selectedItem,
-		'id',
-		'name',
-		galleryStyles.button.default,
-		galleryStyles.button.inactive,
-		galleryStyles.button.active,
-		Button,
-		ButtonBuilder,
-		handleClick
-	);
+	const componentsToRender = createComponents({
+		items: subFilters,
+		selectedItem: selectedItem,
+		idKey: 'id',
+		nameKey: 'name',
+		styles: galleryStyles.button,
+		onClick: handleClick,
+		ButtonComponent: Button,
+		ButtonBuilderClass: ButtonBuilder,
+	})
 
 	const tooltipToRender: tooltipConfig[] = [
 		{

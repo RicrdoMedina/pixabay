@@ -11,9 +11,13 @@ import Logo from '@/components/Svg/Logo';
 import MobileLogo from '@/components/Svg/MobileLogo';
 import useMobile from '@/hooks/use-is-mobile';
 import useScrollDirection from '@/hooks/use-scroll-direction';
+import LoginForm from '@/components/Auth/LoginForm/LoginFormProvider';
+import { useModal } from '@/hooks/useModal';
+import MegaMenu from '@/components/MegaMenu/MegaMenu';
 
 const Header = () => {
 	const isScrollingDown = useScrollDirection(10);
+	const { showModal } = useModal();
 	const { isMobile } = useMobile();
 	return (
 		<header
@@ -53,6 +57,7 @@ const Header = () => {
 							className="w-full h-10 bg-custom-gray-200 rounded-3xl flex items-center pl-4"
 							classNameInput="w-full h-full outline-0 border-none bg-transparent"
 							dropdownButtonDisabled={isMobile}
+							onClick={() => undefined}
 						/>
 					)}
 				</div>
@@ -78,6 +83,7 @@ const Header = () => {
 							}
 						)}
 						label="Log in"
+						onClick={() => showModal(<LoginForm />)}
 					/>
 					<Button
 						className={classNames(
@@ -88,12 +94,14 @@ const Header = () => {
 							}
 						)}
 						label="Join"
+						onClick={() => showModal(<LoginForm />)}
 					/>
 					<Button
 						className="w-auto h-10 rounded-3xl px-3 bg-primary text-sm font-sans font-bold text-white hidden md:flex items-center whitespace-nowrap"
 						label="Upload"
 						icon={<UploadIcon />}
 						iconPosition="left"
+						onClick={() => showModal(<LoginForm />)}
 					/>
 					<span className="flex md:hidden items-center justify-center">
 						<Bars3Icon

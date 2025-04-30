@@ -1,3 +1,6 @@
+import { IMapButtonsConfig } from "@/interfaces";
+import { mapItemsToButtons } from "@/lib/map/map-items-to-buttons";
+
 export const isEmpty = (value: unknown): boolean => {
   if (value == null || value === 0 || value === '') {
     return true;
@@ -29,3 +32,18 @@ export const isUndefined = (value: unknown): value is undefined => {
 export const isArray = (value: unknown): value is unknown[] => {
   return Array.isArray(value);
 };
+
+export const createComponents = <T>(config: IMapButtonsConfig<T>) => {
+  return mapItemsToButtons(
+    config.items,
+    config.selectedItem,
+    config.idKey,
+    config.nameKey,
+    config.styles.default,
+    config.styles.inactive,
+    config.styles.active,
+    config.ButtonComponent,
+    config.ButtonBuilderClass,
+    config.onClick
+  );
+}

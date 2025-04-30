@@ -7,6 +7,7 @@ type ImageActionsOverlayProps = {
 };
 
 const ImageActionsOverlay: FC<ImageActionsOverlayProps> = ({ tooltips }) => {
+
 	return (
 		<div className="w-full h-full absolute inset-0 opacity-0 group-hover:opacity-100 ease-in-out transition-all duration-500" data-testid="image-actions-overlay">
 			{tooltips.map((tooltip, index) => (
